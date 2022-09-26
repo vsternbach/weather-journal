@@ -44,5 +44,5 @@ app.get('/get', (req, res)=> {
 // post
 app.post('/post', (req, res)=> {
     projectData = req.body;
-    res.send('ok');
+    res.send(req.body);
 })
