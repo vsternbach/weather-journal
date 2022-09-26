@@ -1,9 +1,14 @@
+const { setup, teardown } = require('jest-dev-server');
 const requests = [];
 const responses = [];
 const zip = '12345';
 const feelings = 'Great';
 
 beforeAll(async() => {
+    await setup({
+        command: 'node server.js',
+        port: 3000,
+    });
     await page.goto(`http://localhost:3000`);
     await page.setRequestInterception(true);
     // await page.setViewport({width: 499, height: 800});
@@ -23,6 +28,7 @@ beforeAll(async() => {
 });
 
 afterAll(async() => {
+    await teardown();
 });
 
 describe('weather journal', () => {
